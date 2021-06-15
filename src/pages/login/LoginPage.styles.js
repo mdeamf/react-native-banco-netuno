@@ -9,9 +9,9 @@ export const Login = styled(ScrollView).attrs({
   contentContainerStyle: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'safe center',
-    alignItems: 'safe center',
-    padding: '16px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
   },
 })``;
 
