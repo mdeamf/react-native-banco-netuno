@@ -11,15 +11,27 @@ import {
   LoginWarning,
 } from './LoginPage.styles';
 
+let LOGIN_FIELDS = {
+  username: 'usuario',
+  password: 'senha',
+};
+
 export const LoginPage = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    setFocus,
+    formState: { errors, isValid },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  const onLostFocus = (field) => {
+    if (field === LOGIN_FIELDS.username && !isValid) {
+      setFocus(LOGIN_FIELDS.password);
+    }
   };
 
   const checkUsernameError = () => {
@@ -37,10 +49,10 @@ export const LoginPage = () => {
         <LoginInputs>
           <Controller
             control={control}
-            name="usuario"
+            name={LOGIN_FIELDS.username}
             rules={{ required: true }}
             defaultValue=""
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur, value, ref } }) => (
               <View>
                 <TextInput
                   mode="outlined"
@@ -49,6 +61,8 @@ export const LoginPage = () => {
                   error={checkUsernameError()}
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
+                  onSubmitEditing={() => onLostFocus(LOGIN_FIELDS.username)}
+                  ref={ref}
                 />
                 <LoginWarning type="error" visible={checkUsernameError()}>
                   O usuário é de preenchimento obrigatório!
@@ -59,10 +73,10 @@ export const LoginPage = () => {
 
           <Controller
             control={control}
-            name="senha"
+            name={LOGIN_FIELDS.password}
             rules={{ required: true, minLength: 6 }}
             defaultValue=""
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, onBlur, value, ref } }) => (
               <View>
                 <TextInput
                   mode="outlined"
@@ -71,6 +85,7 @@ export const LoginPage = () => {
                   error={checkPasswordError()}
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
+                  ref={ref}
                 />
                 <LoginWarning type="error" visible={checkPasswordError()}>
                   A senha deve ter no mínimo 6 caracteres.
