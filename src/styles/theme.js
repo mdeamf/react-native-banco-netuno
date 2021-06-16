@@ -56,6 +56,7 @@ const colors = {
   bg: {
     primary: '#FFFFFF',
     secondary: '#F1F1F1',
+    overlay: '#00000075',
   },
   text: {
     primary: '#262626',
