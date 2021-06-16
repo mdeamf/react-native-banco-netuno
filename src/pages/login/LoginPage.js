@@ -2,8 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, TextInput } from 'react-native-paper';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Loading } from '../../components/Loading';
+import { DO_LOGIN } from '../../redux/actions/loginActions';
 
 import {
   Login,
@@ -15,6 +17,11 @@ import {
 
 const LoginPage = ({ setLoading }) => {
   const [hidePassword, setHidePassword] = React.useState(true);
+  const [doingLogin, setDoingLogin] = React.useState(false);
+
+  const state = useSelector((currentState) => currentState);
+
+  const dispatch = useDispatch();
 
   const {
     control,
@@ -23,9 +30,15 @@ const LoginPage = ({ setLoading }) => {
     formState: { errors, isValid },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     setLoading(true);
+    setDoingLogin(true);
+
+    setTimeout(() => {
+      dispatch({
+        type: DO_LOGIN,
+      });
+    }, 3000);
   };
 
   const onUsernameSubmit = () => {
@@ -41,6 +54,12 @@ const LoginPage = ({ setLoading }) => {
   const checkPasswordError = () => {
     return errors?.senha?.type === 'minLength';
   };
+
+  React.useEffect(() => {
+    if (doingLogin && state.login.isLoggedIn) {
+      setLoading(false);
+    }
+  });
 
   return (
     <Login>
@@ -63,6 +82,7 @@ const LoginPage = ({ setLoading }) => {
                   onChangeText={(text) => onChange(text)}
                   onSubmitEditing={onUsernameSubmit}
                   ref={ref}
+                  disabled={doingLogin}
                 />
                 <LoginWarning type="error" visible={checkUsernameError()}>
                   O usuário é de preenchimento obrigatório!
@@ -86,6 +106,7 @@ const LoginPage = ({ setLoading }) => {
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
                   ref={ref}
+                  disabled={doingLogin}
                   secureTextEntry={hidePassword}
                   right={
                     <TextInput.Icon
@@ -100,7 +121,11 @@ const LoginPage = ({ setLoading }) => {
               </View>
             )}
           />
-          <Button mode="contained" onPress={handleSubmit(onSubmit)}>
+          <Button
+            mode="contained"
+            onPress={handleSubmit(onSubmit)}
+            disabled={doingLogin}
+          >
             Acessar conta
           </Button>
         </LoginInputs>
