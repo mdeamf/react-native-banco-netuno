@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, TextInput } from 'react-native-paper';
 
+import { Loading } from '../../components/Loading';
+
 import {
   Login,
   LoginLogo,
@@ -16,7 +18,7 @@ let LOGIN_FIELDS = {
   password: 'senha',
 };
 
-export const LoginPage = () => {
+const LoginPage = ({ setLoading }) => {
   const {
     control,
     handleSubmit,
@@ -26,6 +28,7 @@ export const LoginPage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    setLoading(true);
   };
 
   const onLostFocus = (field) => {
@@ -101,3 +104,5 @@ export const LoginPage = () => {
     </Login>
   );
 };
+
+export default Loading(LoginPage);

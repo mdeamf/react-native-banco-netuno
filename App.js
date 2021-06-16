@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SafeArea } from './src/components/SafeArea';
 import { theme } from './src/styles/theme';
 import { SplashPage } from './src/pages/splash/SplashPage';
-import { LoginPage } from './src/pages/login/LoginPage';
+import LoginPage from './src/pages/login/LoginPage';
 
 const Stack = createStackNavigator();
 
