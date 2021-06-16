@@ -13,11 +13,6 @@ import {
   LoginWarning,
 } from './LoginPage.styles';
 
-let LOGIN_FIELDS = {
-  username: 'usuario',
-  password: 'senha',
-};
-
 const LoginPage = ({ setLoading }) => {
   const {
     control,
@@ -31,9 +26,9 @@ const LoginPage = ({ setLoading }) => {
     setLoading(true);
   };
 
-  const onLostFocus = (field) => {
-    if (field === LOGIN_FIELDS.username && !isValid) {
-      setFocus(LOGIN_FIELDS.password);
+  const onUsernameSubmit = () => {
+    if (!isValid) {
+      setFocus('senha');
     }
   };
 
@@ -52,7 +47,7 @@ const LoginPage = ({ setLoading }) => {
         <LoginInputs>
           <Controller
             control={control}
-            name={LOGIN_FIELDS.username}
+            name="usuario"
             rules={{ required: true }}
             defaultValue=""
             render={({ field: { onChange, onBlur, value, ref } }) => (
@@ -64,7 +59,7 @@ const LoginPage = ({ setLoading }) => {
                   error={checkUsernameError()}
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
-                  onSubmitEditing={() => onLostFocus(LOGIN_FIELDS.username)}
+                  onSubmitEditing={onUsernameSubmit}
                   ref={ref}
                 />
                 <LoginWarning type="error" visible={checkUsernameError()}>
@@ -76,7 +71,7 @@ const LoginPage = ({ setLoading }) => {
 
           <Controller
             control={control}
-            name={LOGIN_FIELDS.password}
+            name="senha"
             rules={{ required: true, minLength: 6 }}
             defaultValue=""
             render={({ field: { onChange, onBlur, value, ref } }) => (
