@@ -14,6 +14,8 @@ import {
 } from './LoginPage.styles';
 
 const LoginPage = ({ setLoading }) => {
+  const [hidePassword, setHidePassword] = React.useState(true);
+
   const {
     control,
     handleSubmit,
@@ -84,6 +86,13 @@ const LoginPage = ({ setLoading }) => {
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
                   ref={ref}
+                  secureTextEntry={hidePassword}
+                  right={
+                    <TextInput.Icon
+                      name={hidePassword ? 'eye' : 'eye-off'}
+                      onPress={() => setHidePassword(!hidePassword)}
+                    />
+                  }
                 />
                 <LoginWarning type="error" visible={checkPasswordError()}>
                   A senha deve ter no mínimo 6 caracteres.
