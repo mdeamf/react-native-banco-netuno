@@ -9,7 +9,7 @@ import { createStore } from 'redux';
 
 import { SafeArea } from './src/components/SafeArea';
 import { theme } from './src/styles/theme';
-import { SplashPage } from './src/pages/splash/SplashPage';
+import SplashPage from './src/pages/splash/SplashPage';
 import LoginPage from './src/pages/login/LoginPage';
 import reducers from './src/redux/index';
 

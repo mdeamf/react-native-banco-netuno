@@ -4,14 +4,14 @@ import { Logo } from '../../components/Logo';
 import { FadeIn } from '../../components/FadeIn';
 import { LogoContainer } from './SplashPage.styles';
 
-export const SplashPage = ({ navigation }) => {
+export default ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.reset({
         index: 0,
         routes: [{ name: 'Login' }],
       });
-    }, 6000);
+    }, 1000);
   }, [navigation]);
 
   return (
