@@ -11,7 +11,6 @@ export const Welcome = styled(Text)`
   margin-bottom: ${(props) => props.theme.space.xl}px;
   color: ${(props) => props.theme.colors.text.primary};
   font-size: 32px;
-  font-family: ${(props) => props.theme.fonts.OSR};
 `;
 
 export const Username = styled(Text)`
