@@ -1,14 +1,17 @@
-import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
+import { Text, View } from 'react-native';
+
 export const HomeContainer = styled(View)`
+  padding: ${(props) => props.theme.space.lg}px;
   flex: 1;
 `;
 
 export const Welcome = styled(Text)`
-  padding: 16px;
+  margin-bottom: ${(props) => props.theme.space.xl}px;
   color: ${(props) => props.theme.colors.text.primary};
   font-size: 32px;
+  font-family: ${(props) => props.theme.fonts.OSR};
 `;
 
 export const Username = styled(Text)`
