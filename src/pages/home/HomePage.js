@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { Text } from 'react-native';
+import { useSelector } from 'react-redux';
 
-import { HomeContainer } from './HomePage.styles';
+import { HomeContainer, Welcome, Username } from './HomePage.styles';
 
 export default () => {
+  const login = useSelector((currentState) => currentState.login);
+
   return (
     <HomeContainer>
-      <Text>Hello!</Text>
+      <Welcome>
+        Bem-vindo, <Username>{login.username}</Username>!
+      </Welcome>
     </HomeContainer>
   );
 };
