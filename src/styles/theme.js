@@ -20,6 +20,10 @@ const space = {
   xxl: '64px',
 };
 
+const fonts = {
+  OSR: 'OpenSans-Regular',
+};
+
 const fontWeights = {
   regular: 400,
   medium: 500,
@@ -72,6 +76,7 @@ export const theme = {
   sizes,
   lineHeights,
   space,
+  fonts,
   fontWeights,
   fontSizes,
   colors,
