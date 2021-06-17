@@ -1,23 +1,24 @@
 const sizes = {
-  sm: '8px',
-  md: '16px',
-  lg: '32px',
-  xl: '64px',
-  xxl: '128px',
+  sm: 8,
+  md: 16,
+  mlg: 20,
+  lg: 32,
+  xl: 64,
+  xxl: 128,
 };
 
 const lineHeights = {
-  title: '28px',
-  copy: '20px',
+  title: 28,
+  copy: 20,
 };
 
 const space = {
-  zero: '0px',
-  sm: '4px',
-  md: '8px',
-  lg: '16px',
-  xl: '32px',
-  xxl: '64px',
+  zero: 0,
+  sm: 4,
+  md: 8,
+  lg: 16,
+  xl: 32,
+  xxl: 64,
 };
 
 const fonts = {
@@ -31,15 +32,15 @@ const fontWeights = {
 };
 
 const fontSizes = {
-  caption: '12px',
-  button: '14px',
-  body: '16px',
-  title: '20px',
-  h5: '24px',
-  h4: '34px',
-  h3: '45px',
-  h2: '56px',
-  h1: '112px',
+  caption: 12,
+  button: 14,
+  body: 16,
+  title: 20,
+  h5: 24,
+  h4: 34,
+  h3: 45,
+  h2: 56,
+  h1: 112,
 };
 
 const colors = {
