@@ -1,12 +1,10 @@
-import { DO_LOGIN } from '../actions/loginActions';
+import { DO_LOGIN } from '../actions/LoginActions';
 
 const initialState = {
   isLoggedIn: false,
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
-  console.log(state);
   let isLoggedIn = state.isLoggedIn;
 
   switch (action.type) {
