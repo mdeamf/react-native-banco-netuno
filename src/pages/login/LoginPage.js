@@ -5,7 +5,7 @@ import { Button, TextInput } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Loading } from '../../components/Loading';
-import { DO_LOGIN } from '../../redux/actions/loginActions';
+import { DO_LOGIN } from '../../redux/actions/LoginActions';
 
 import {
   Login,
@@ -15,7 +15,7 @@ import {
   LoginWarning,
 } from './LoginPage.styles';
 
-const LoginPage = ({ setLoading }) => {
+const LoginPage = ({ setLoading, navigation }) => {
   const [hidePassword, setHidePassword] = React.useState(true);
   const [doingLogin, setDoingLogin] = React.useState(false);
 
@@ -58,6 +58,10 @@ const LoginPage = ({ setLoading }) => {
   React.useEffect(() => {
     if (doingLogin && state.login.isLoggedIn) {
       setLoading(false);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
     }
   });
 
@@ -105,6 +109,7 @@ const LoginPage = ({ setLoading }) => {
                   error={checkPasswordError()}
                   onBlur={onBlur}
                   onChangeText={(text) => onChange(text)}
+                  onSubmitEditing={handleSubmit(onSubmit)}
                   ref={ref}
                   disabled={doingLogin}
                   secureTextEntry={hidePassword}
