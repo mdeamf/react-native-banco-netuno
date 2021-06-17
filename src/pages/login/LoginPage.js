@@ -19,7 +19,7 @@ const LoginPage = ({ setLoading, navigation }) => {
   const [hidePassword, setHidePassword] = React.useState(true);
   const [doingLogin, setDoingLogin] = React.useState(false);
 
-  const state = useSelector((currentState) => currentState);
+  const state = useSelector((currentState) => currentState.login);
 
   const dispatch = useDispatch();
 
@@ -56,12 +56,8 @@ const LoginPage = ({ setLoading, navigation }) => {
   };
 
   React.useEffect(() => {
-    if (doingLogin && state.login.isLoggedIn) {
+    if (doingLogin && state.isLoggedIn) {
       setLoading(false);
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'Home' }],
-      });
     }
   });
 

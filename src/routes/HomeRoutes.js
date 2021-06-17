@@ -1,22 +1,24 @@
 import React from 'react';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { NavBar } from '../components/NavBar';
 import HomePage from '../pages/home/HomePage';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default () => {
   return (
-    <Stack.Navigator
+    <Drawer.Navigator
       initialRouteName="Home"
       animationEnable="true"
+      drawerPosition="right"
       screenOptions={{
         header: (props) => <NavBar {...props} />,
+        headerShown: true,
       }}
     >
-      <Stack.Screen name="Home" component={HomePage} />
-    </Stack.Navigator>
+      <Drawer.Screen name="Home" component={HomePage} />
+    </Drawer.Navigator>
   );
 };
