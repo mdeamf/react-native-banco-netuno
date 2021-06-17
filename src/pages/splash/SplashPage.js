@@ -11,7 +11,7 @@ export default ({ navigation }) => {
         index: 0,
         routes: [{ name: 'Login' }],
       });
-    }, 1000);
+    }, 5000);
   }, [navigation]);
 
   return (
