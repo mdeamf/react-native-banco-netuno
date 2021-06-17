@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components/native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import { SafeArea } from './src/components/SafeArea';
 import { theme } from './src/styles/theme';
 
 import Routes from './src/routes/index';
@@ -18,9 +17,7 @@ export default function App() {
     <>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <SafeArea>
-            <Routes />
-          </SafeArea>
+          <Routes />
           <StatusBar style="auto" />
         </ThemeProvider>
       </Provider>
