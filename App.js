@@ -1,6 +1,7 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 
+import { setCustomText } from 'react-native-global-props';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
@@ -14,6 +15,14 @@ import reducers from './src/redux/index';
 
 const store = createStore(reducers);
 
+const setDefaultFont = () => {
+  setCustomText({
+    style: {
+      fontFamily: theme.fonts.OSR,
+    },
+  });
+};
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -22,6 +31,7 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
+    setDefaultFont();
     return (
       <>
         <Provider store={store}>
