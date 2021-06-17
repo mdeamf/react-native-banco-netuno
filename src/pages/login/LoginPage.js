@@ -15,7 +15,7 @@ import {
   LoginWarning,
 } from './LoginPage.styles';
 
-const LoginPage = ({ setLoading, navigation }) => {
+const LoginPage = ({ setLoading }) => {
   const [hidePassword, setHidePassword] = React.useState(true);
   const [doingLogin, setDoingLogin] = React.useState(false);
 
@@ -30,13 +30,14 @@ const LoginPage = ({ setLoading, navigation }) => {
     formState: { errors, isValid },
   } = useForm();
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     setLoading(true);
     setDoingLogin(true);
 
     setTimeout(() => {
       dispatch({
         type: DO_LOGIN,
+        username: data.usuario,
       });
     }, 3000);
   };
