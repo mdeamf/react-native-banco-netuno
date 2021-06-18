@@ -12,7 +12,8 @@ export const HomeContainer = styled(ScrollView).attrs((props) => ({
 export const Welcome = styled(Text)`
   margin-bottom: ${(props) => props.theme.space.xl}px;
   color: ${(props) => props.theme.colors.text.primary};
-  font-size: 32px;
+  font-size: ${(props) => props.theme.fontSizes.h5}px;
+  font-family: ${(props) => props.theme.fonts.OSSB};
 `;
 
 export const Username = styled(Text)`
