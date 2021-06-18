@@ -18,7 +18,11 @@ export default () => {
         headerShown: true,
       }}
     >
-      <Drawer.Screen name="Home" component={HomePage} />
+      <Drawer.Screen
+        name="Home"
+        component={HomePage}
+        options={{ drawerLabel: 'Início' }}
+      />
     </Drawer.Navigator>
   );
 };
