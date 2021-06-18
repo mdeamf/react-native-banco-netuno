@@ -9,7 +9,7 @@ export const Card = styled(CardPaper)`
 `;
 
 export const Content = styled(Card.Content)`
-  padding: 16px;
+  padding: 16px 16px 0 16px;
 `;
 
 export const Container = styled(View)`
