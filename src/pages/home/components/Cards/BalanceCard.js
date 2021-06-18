@@ -26,7 +26,7 @@ const BalanceButtons = () => {
   return (
     <Card.Actions>
       <ExtractButton
-        title="Ver extrato"
+        title="Ver extrato "
         type="clear"
         iconRight="true"
         icon={<ExtractIcon />}
