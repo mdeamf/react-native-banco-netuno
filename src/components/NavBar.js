@@ -1,22 +1,24 @@
 import React from 'react';
 
+import { useRoute } from '@react-navigation/native';
+
 import { Appbar } from 'react-native-paper';
 
-export const NavBar = ({ scene, previous }) => {
+export const NavBar = (props) => {
+  const route = useRoute();
+
   return (
     <Appbar.Header>
-      {previous && (
-        <Appbar.BackAction onPress={scene.descriptor.navigation.goBack} />
+      {route.name !== 'Home' && (
+        <Appbar.BackAction onPress={props.navigation.goBack} />
       )}
       <Appbar.Content title="Banco Netuno" />
-      {!previous && (
-        <Appbar.Action
-          icon="menu"
-          onPress={() => {
-            scene.descriptor.navigation.openDrawer();
-          }}
-        />
-      )}
+      <Appbar.Action
+        icon="menu"
+        onPress={() => {
+          props.navigation.navigate('Sobre');
+        }}
+      />
     </Appbar.Header>
   );
 };

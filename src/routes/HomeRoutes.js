@@ -1,30 +1,47 @@
 import React from 'react';
+import styled from 'styled-components/native';
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
+import { View } from 'react-native';
 
 import { NavBar } from '../components/NavBar';
 import HomePage from '../pages/home/HomePage';
 import AboutPage from '../pages/about/AboutPage';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+const StackCard = styled(View)`
+  flex: 1;
+  background-color: transparent;
+`;
 
 export default () => {
   return (
-    <Drawer.Navigator
+    <Stack.Navigator
       initialRouteName="Home"
-      animationEnable="true"
-      drawerPosition="right"
+      mode="modal"
       screenOptions={{
+        animationEnabled: true,
+        cardStyleInterpolator: ({ current, layouts }) => {
+          return {
+            cardStyle: {
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+                },
+              ],
+            },
+          };
+        },
+        cardOverlay: () => <StackCard />,
         header: (props) => <NavBar {...props} />,
-        headerShown: true,
       }}
     >
-      <Drawer.Screen
-        name="Home"
-        component={HomePage}
-        options={{ drawerLabel: 'Início' }}
-      />
-      <Drawer.Screen name="Sobre" component={AboutPage} />
-    </Drawer.Navigator>
+      <Stack.Screen name="Home" component={HomePage} />
+      <Stack.Screen name="Sobre" component={AboutPage} />
+    </Stack.Navigator>
   );
 };
