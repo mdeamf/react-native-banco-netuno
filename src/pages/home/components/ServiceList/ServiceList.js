@@ -12,8 +12,8 @@ const Container = styled(View)`
 `;
 
 const List = ({ services }) => {
-  return services.map((service) => (
-    <ServiceItem icon={service.icon} title={service.title} />
+  return services.map((service, index) => (
+    <ServiceItem key={index} icon={service.icon} title={service.title} />
   ));
 };
 
