@@ -26,6 +26,7 @@ const setDefaultFont = () => {
 export default function App() {
   let [fontsLoaded] = useFonts({
     'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'OpenSans-SemiBold': require('./assets/fonts/OpenSans-SemiBold.ttf'),
   });
 
   if (!fontsLoaded) {

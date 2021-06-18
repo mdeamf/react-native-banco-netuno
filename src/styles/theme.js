@@ -23,6 +23,7 @@ const space = {
 
 const fonts = {
   OSR: 'OpenSans-Regular',
+  OSSB: 'OpenSans-SemiBold',
 };
 
 const fontWeights = {
