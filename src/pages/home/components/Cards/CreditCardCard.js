@@ -22,6 +22,7 @@ const InvoiceCurrent = styled(Invoice)`
 
 const InvoiceLimit = styled(Invoice)`
   color: ${(props) => props.theme.colors.text.primary};
+  padding-bottom: ${(props) => props.theme.sizes.md}px;
 `;
 
 export const CreditCardCard = () => {
