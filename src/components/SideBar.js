@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StyleSheet } from 'react-native';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Icon, Button, Overlay } from 'react-native-elements';
 import { withTheme } from 'styled-components/native';
 
@@ -41,22 +41,28 @@ export const SideBar = withTheme(
             data={services}
             keyExtractor={(item) => item.title}
             renderItem={({ item }) => (
-              <Button
-                title={item.title}
-                type="clear"
-                buttonStyle={sideBarStyle.button}
-                icon={
-                  <Icon
-                    name={item.icon}
-                    style={sideBarStyle.icon}
-                    color={theme.colors.brand.primary}
+              <>
+                {!item.icon ? (
+                  <View />
+                ) : (
+                  <Button
+                    title={item.title}
+                    type="clear"
+                    buttonStyle={sideBarStyle.button}
+                    icon={
+                      <Icon
+                        name={item.icon}
+                        style={sideBarStyle.icon}
+                        color={theme.colors.brand.primary}
+                      />
+                    }
+                    onPress={() => {
+                      setShowing(false);
+                      navigation.navigate(item.route);
+                    }}
                   />
-                }
-                onPress={() => {
-                  setShowing(false);
-                  navigation.navigate(item.route);
-                }}
-              />
+                )}
+              </>
             )}
           />
         </FadeIn>
