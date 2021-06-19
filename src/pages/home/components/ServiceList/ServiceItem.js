@@ -34,13 +34,13 @@ const ServiceTitle = styled(Text)`
   font-family: ${(props) => props.theme.fonts.OSSB};
 `;
 
-export const ServiceItem = ({ icon, title }) => {
+export const ServiceItem = ({ icon, title, route, navigation }) => {
   return (
     <>
       {!icon ? (
         <ContainerFake />
       ) : (
-        <Container onPress={() => console.log('hello')}>
+        <Container onPress={() => navigation.navigate(route)}>
           <>
             <ServiceIcon name={icon} />
             <ServiceTitle>{title}</ServiceTitle>

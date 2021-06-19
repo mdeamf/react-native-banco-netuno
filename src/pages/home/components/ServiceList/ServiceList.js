@@ -11,20 +11,29 @@ const Container = styled(View)`
   align-items: center;
 `;
 
-const List = ({ services }) => {
+const List = ({ services, navigation }) => {
   return services.map((service, index) => (
-    <ServiceItem key={index} icon={service.icon} title={service.title} />
+    <ServiceItem
+      key={index}
+      icon={service.icon}
+      title={service.title}
+      route={service.route}
+      navigation={navigation}
+    />
   ));
 };
 
-export const ServiceList = ({ services = [] }) => {
-  if (services.length % 2 !== 0 && services[services.length - 1].icon) {
-    services.push({ title: 'Empty' });
+export const ServiceList = (props) => {
+  if (
+    props.services.length % 2 !== 0 &&
+    props.services[props.services.length - 1].icon
+  ) {
+    props.services.push({ title: 'Empty' });
   }
 
   return (
     <Container>
-      <List services={services} />
+      <List {...props} />
     </Container>
   );
 };

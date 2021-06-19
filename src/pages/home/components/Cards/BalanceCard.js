@@ -22,7 +22,7 @@ const ExtractIcon = styled(Icon).attrs((props) => ({
   size: props.theme.sizes.mlg,
 }))``;
 
-const BalanceButtons = () => {
+const BalanceButtons = ({ navigation }) => {
   return (
     <Card.Actions>
       <ExtractButton
@@ -30,6 +30,7 @@ const BalanceButtons = () => {
         type="clear"
         iconRight="true"
         icon={<ExtractIcon />}
+        onPress={() => navigation.navigate('Extract')}
       />
     </Card.Actions>
   );
@@ -45,7 +46,7 @@ export const BalanceCard = (props) => {
         </Container>
         <Value>R$ 2.500,00</Value>
       </Content>
-      <BalanceButtons />
+      <BalanceButtons navigation={props.navigation} />
     </Card>
   );
 };

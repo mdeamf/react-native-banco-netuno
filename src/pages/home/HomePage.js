@@ -7,7 +7,7 @@ import { CreditCardCard } from './components/Cards/CreditCardCard';
 import { ServiceList } from './components/ServiceList/ServiceList';
 import { serviceList } from '../../global/Constants';
 
-export default () => {
+export default (props) => {
   const login = useSelector((currentState) => currentState.login);
 
   const services = serviceList;
@@ -18,10 +18,10 @@ export default () => {
         Bem-vindo, <Username>{login.username}</Username>!
       </Welcome>
 
-      <BalanceCard />
+      <BalanceCard {...props} />
       <CreditCardCard />
 
-      <ServiceList services={services} />
+      <ServiceList services={services} {...props} />
     </HomeContainer>
   );
 };
