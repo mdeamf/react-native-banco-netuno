@@ -18,6 +18,10 @@ const List = ({ services }) => {
 };
 
 export const ServiceList = ({ services = [] }) => {
+  if (services.length % 2 !== 0 && services[services.length - 1].icon) {
+    services.push({ title: 'Empty' });
+  }
+
   return (
     <Container>
       <List services={services} />

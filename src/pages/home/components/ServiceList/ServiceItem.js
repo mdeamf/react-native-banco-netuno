@@ -1,8 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import styled from 'styled-components';
+
+const ContainerFake = styled(View)`
+  flex-grow: 1;
+  flex-basis: 25%;
+  margin: ${(props) => props.theme.space.lg}px;
+  padding: ${(props) => props.theme.space.lg}px;
+`;
 
 const Container = styled(TouchableRipple)`
   align-items: center;
@@ -29,11 +36,17 @@ const ServiceTitle = styled(Text)`
 
 export const ServiceItem = ({ icon, title }) => {
   return (
-    <Container onPress={() => console.log('hello')}>
-      <>
-        <ServiceIcon name={icon} />
-        <ServiceTitle>{title}</ServiceTitle>
-      </>
-    </Container>
+    <>
+      {!icon ? (
+        <ContainerFake />
+      ) : (
+        <Container onPress={() => console.log('hello')}>
+          <>
+            <ServiceIcon name={icon} />
+            <ServiceTitle>{title}</ServiceTitle>
+          </>
+        </Container>
+      )}
+    </>
   );
 };

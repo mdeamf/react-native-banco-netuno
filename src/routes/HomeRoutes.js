@@ -41,7 +41,7 @@ export default () => {
       }}
     >
       <Stack.Screen name="Home" component={HomePage} />
-      <Stack.Screen name="Sobre" component={AboutPage} />
+      <Stack.Screen name="About" component={AboutPage} />
     </Stack.Navigator>
   );
 };
