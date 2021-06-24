@@ -7,6 +7,8 @@ import { SideBar } from './SideBar';
 
 const AppHeader = styled(Appbar.Header)`
   background-color: ${(props) => props.theme.colors.brand.primary};
+  elevation: 0;
+  shadow-opacity: 0;
 `;
 
 export const NavBar = (props) => {
