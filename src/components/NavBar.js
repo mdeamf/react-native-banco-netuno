@@ -22,7 +22,9 @@ export const NavBar = (props) => {
           <Appbar.BackAction onPress={props.navigation.goBack} />
         )}
 
-        <Appbar.Content title="Banco Netuno" />
+        <Appbar.Content
+          title={props?.scene?.descriptor?.options?.title || route.name}
+        />
 
         {route.name === 'Home' && (
           <Appbar.Action
