@@ -7,7 +7,7 @@ import { View } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import HomePage from '../pages/home/HomePage';
 import AboutPage from '../pages/about/AboutPage';
-import ExtractPage from '../pages/extract/ExtractPage';
+import StatementPage from '../pages/statement/StatementPage';
 
 const Stack = createStackNavigator();
 
@@ -48,8 +48,8 @@ export default () => {
         options={{ title: 'Sobre' }}
       />
       <Stack.Screen
-        name="Extract"
-        component={ExtractPage}
+        name="Statement"
+        component={StatementPage}
         options={{ title: 'Extrato' }}
       />
     </Stack.Navigator>

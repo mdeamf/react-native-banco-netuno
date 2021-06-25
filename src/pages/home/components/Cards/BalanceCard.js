@@ -11,11 +11,11 @@ const Value = styled(Text)`
   color: ${(props) => props.theme.colors.text.success};
 `;
 
-const ExtractButton = styled(Button)`
+const StatementButton = styled(Button)`
   color: ${(props) => props.theme.colors.brand.primary};
 `;
 
-const ExtractIcon = styled(Icon).attrs((props) => ({
+const StatementIcon = styled(Icon).attrs((props) => ({
   color: props.theme.colors.brand.primary,
   name: 'arrow-right',
   type: 'material-community',
@@ -25,12 +25,12 @@ const ExtractIcon = styled(Icon).attrs((props) => ({
 const BalanceButtons = ({ navigation }) => {
   return (
     <Card.Actions>
-      <ExtractButton
+      <StatementButton
         title="Ver extrato "
         type="clear"
         iconRight="true"
-        icon={<ExtractIcon />}
-        onPress={() => navigation.navigate('Extract')}
+        icon={<StatementIcon />}
+        onPress={() => navigation.navigate('Statement')}
       />
     </Card.Actions>
   );
